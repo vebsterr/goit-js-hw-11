@@ -18,7 +18,6 @@
   "bugs": {
     "url": "https://github.com/luxplanjay/js-22/issues"
   },
-  "homepage": "https://github.com/luxplanjay/js-22#readme",
   "devDependencies": {
     "json-server": "^0.16.2",
     "parcel-bundler": "^1.12.4",
