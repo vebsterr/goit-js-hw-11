@@ -33,7 +33,6 @@ function onFormSubmit(e) {
   });
 
   generateMarkup();
-  refs.loadMoreBtn.classList.add('search-more--visible');
 }
 
 function totalOfImages(total) {
@@ -48,8 +47,6 @@ function loadMore() {
   generateMarkup();
 }
 
-async function fetchImg() {}
-
 async function generateMarkup() {
   const result = await API.getImages();
   const arrayImg = result.data.hits;
@@ -62,5 +59,7 @@ async function generateMarkup() {
   }
 
   refs.gallery.insertAdjacentHTML('beforeend', card(arrayImg));
+  refs.loadMoreBtn.classList.add('search-more--visible');
+
   lightbox.refresh();
 }
