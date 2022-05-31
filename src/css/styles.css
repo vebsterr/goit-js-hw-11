@@ -38,7 +38,7 @@ form {
 }
 
 .header {
-  background-color: darkgreen;
+  background-color: rgb(7, 33, 75);
   height: 70px;
   display: flex;
   align-items: center;
@@ -68,7 +68,7 @@ input {
 }
 
 input::placeholder {
-  color: rgb(7, 47, 47);
+  color: rgb(7, 33, 75);
 }
 
 button {
@@ -89,7 +89,7 @@ button {
 
 .search-more {
   padding: 13px;
-  background-color: darkgreen;
+  background-color: rgb(7, 33, 75);
   border-radius: 10px;
   margin-left: 45%;
   margin-top: 20px;

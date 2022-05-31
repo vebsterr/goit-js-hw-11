@@ -25,4 +25,3 @@ async function getImages() {
 }
 
 export default { params, getImages };
-
