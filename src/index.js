@@ -27,6 +27,7 @@ function onFormSubmit(e) {
   generateMarkup();
 
   totalOfImages();
+  refs.loadMoreBtn.classList.add('search-more--visible');
 }
 
 function totalOfImages() {}

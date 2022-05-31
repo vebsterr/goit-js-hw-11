@@ -52,9 +52,8 @@ form {
   font-size: 14px;
 }
 
-
 .search-btn {
-  background-image: url("../images/btn-icon-2.png");
+  background-image: url('../images/btn-icon-2.png');
   background-repeat: no-repeat;
   background-size: cover;
   height: 30px;
@@ -62,14 +61,13 @@ form {
 }
 input {
   border: none;
-  outline:none;
+  outline: none;
   width: 300px;
   border-radius: 10px;
   padding: 10px;
 }
 
-
-input::placeholder{
+input::placeholder {
   color: rgb(7, 47, 47);
 }
 
@@ -87,4 +85,19 @@ button {
   display: flex;
   align-items: center;
   padding: 5px;
+}
+
+.search-more {
+  padding: 13px;
+  background-color: darkgreen;
+  border-radius: 10px;
+  margin-left: 45%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #fafafa;
+  display: none;
+}
+
+.search-more--visible {
+  display: block;
 }
