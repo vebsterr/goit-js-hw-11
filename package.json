@@ -1,0 +1,33 @@
+{
+  "name": "js-22",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "homepage": "https://github.com/vebsterr/goit-js-hw-11",
+  "scripts": {
+    "start": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /goit-js-hw-11/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luxplanjay/js-22.git"
+  },
+  "keywords": [],
+  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luxplanjay/js-22/issues"
+  },
+  "homepage": "https://github.com/luxplanjay/js-22#readme",
+  "devDependencies": {
+    "json-server": "^0.16.2",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
+    "parcel-plugin-nuke-dist": "^1.0.1"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "notiflix": "^3.2.5",
+    "simplelightbox": "^2.10.3"
+  }
+}
