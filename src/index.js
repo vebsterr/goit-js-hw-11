@@ -16,23 +16,24 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
-function onFormSubmit(e) {
+async function onFormSubmit(e) {
   API.params.page = 1;
   refs.gallery.innerHTML = '';
   API.params.q = e.currentTarget.elements.searchQuery.value;
   e.preventDefault();
 
-  API.getImages().then(({ data } = {}) => {
-    if (data.total === 0) {
+  const result = await API.getImages();
+  if (data.total === 0) {
+    if (result?.data?.total === 0) {
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.',
       );
       return;
     }
     totalOfImages(data.total);
-  });
 
-  generateMarkup();
+    generateMarkup(result?.data?.hits);
+  }
 }
 
 function totalOfImages(total) {
