@@ -23,17 +23,15 @@ async function onFormSubmit(e) {
   e.preventDefault();
 
   const result = await API.getImages();
-  if (data.total === 0) {
-    if (result?.data?.total === 0) {
-      Notiflix.Notify.failure(
-        'Sorry, there are no images matching your search query. Please try again.',
-      );
-      return;
-    }
-    totalOfImages(data.total);
-
-    generateMarkup(result?.data?.hits);
+  if (result.total === 0) {
+    Notiflix.Notify.failure(
+      'Sorry, there are no images matching your search query. Please try again.',
+    );
+    return;
   }
+  totalOfImages(result.total);
+
+  generateMarkup(result.data.hits);
 }
 
 function totalOfImages(total) {
@@ -48,18 +46,8 @@ function loadMore() {
   generateMarkup();
 }
 
-async function generateMarkup() {
-  const result = await API.getImages();
-  const arrayImg = result.data.hits;
-
-  if (arrayImg.length === 0) {
-    Notiflix.Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.',
-    );
-    return;
-  }
-
-  refs.gallery.insertAdjacentHTML('beforeend', card(arrayImg));
+async function generateMarkup(images) {
+  refs.gallery.insertAdjacentHTML('beforeend', card(images));
   refs.loadMoreBtn.classList.add('search-more--visible');
 
   lightbox.refresh();
