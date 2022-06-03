@@ -34,7 +34,7 @@ async function searchImg() {
     return;
   }
   totalOfImages(result.data.total);
-  console.log(result.data.total);
+
   generateMarkup(result.data.hits);
 }
 
