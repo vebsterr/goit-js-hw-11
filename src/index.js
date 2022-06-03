@@ -16,6 +16,15 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
+function onFormSubmit(e) {
+  API.params.page = 1;
+  refs.gallery.innerHTML = '';
+  API.params.q = e.currentTarget.elements.searchQuery.value;
+  e.preventDefault();
+
+  searchImg();
+}
+
 async function searchImg() {
   const result = await API.getImages();
   if (result.total === 0) {
@@ -24,18 +33,9 @@ async function searchImg() {
     );
     return;
   }
-  totalOfImages(result.total);
-
+  totalOfImages(result.data.total);
+  console.log(result.data.total);
   generateMarkup(result.data.hits);
-}
-
-function onFormSubmit(e) {
-  API.params.page = 1;
-  refs.gallery.innerHTML = '';
-  API.params.q = e.currentTarget.elements.searchQuery.value;
-  e.preventDefault();
-
-  searchImg();
 }
 
 function totalOfImages(total) {
@@ -50,7 +50,7 @@ function loadMore() {
   searchImg();
 }
 
-async function generateMarkup(images) {
+function generateMarkup(images) {
   refs.gallery.insertAdjacentHTML('beforeend', card(images));
   refs.loadMoreBtn.classList.add('search-more--visible');
 
