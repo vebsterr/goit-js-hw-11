@@ -16,12 +16,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
-async function onFormSubmit(e) {
-  API.params.page = 1;
-  refs.gallery.innerHTML = '';
-  API.params.q = e.currentTarget.elements.searchQuery.value;
-  e.preventDefault();
-
+async function searchImg() {
   const result = await API.getImages();
   if (result.total === 0) {
     Notiflix.Notify.failure(
@@ -34,6 +29,15 @@ async function onFormSubmit(e) {
   generateMarkup(result.data.hits);
 }
 
+function onFormSubmit(e) {
+  API.params.page = 1;
+  refs.gallery.innerHTML = '';
+  API.params.q = e.currentTarget.elements.searchQuery.value;
+  e.preventDefault();
+
+  searchImg();
+}
+
 function totalOfImages(total) {
   if (total) {
     Notiflix.Notify.success(`Hooray! We found ${total} images.`);
@@ -43,7 +47,7 @@ function totalOfImages(total) {
 function loadMore() {
   API.params.page += 1;
 
-  generateMarkup();
+  searchImg();
 }
 
 async function generateMarkup(images) {
